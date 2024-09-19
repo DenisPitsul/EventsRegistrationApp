@@ -58,4 +58,4 @@ Application should be available by link: http://localhost:5173
 
 ## Notes
 
-Advanced level accomplished except for `Implement a separate script that runs at a defined interval of time...`.
+Advanced level accomplished except for "Implement a separate script that runs at a defined interval of time...".
