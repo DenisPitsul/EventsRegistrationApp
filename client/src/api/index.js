@@ -2,7 +2,7 @@ import axios from 'axios';
 import queryString from 'query-string';
 
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:5001/api',
+  baseURL: 'https://event-registration-app-24-45037e00ce10.herokuapp.com/api/',
 });
 
 export const getEvents = sortFilter =>
