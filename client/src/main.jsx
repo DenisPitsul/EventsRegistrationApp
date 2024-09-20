@@ -8,7 +8,7 @@ import store from './store';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter path='/EventsRegistrationApp'>
       <Provider store={store}>
         <App />
       </Provider>
