@@ -1,29 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <title>Single Page Apps for GitHub Pages</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redirecting...</title>
     <script type="text/javascript">
-      // Single Page Apps for GitHub Pages
-      // Modified to remove "/?/" in the redirect
-
-      var pathSegmentsToKeep = 1; // Set to 1 for Project Pages to preserve the repo name
-
-      var l = window.location;
-      l.replace(
-        l.protocol +
-          '//' +
-          l.hostname +
-          (l.port ? ':' + l.port : '') +
-          l.pathname
-            .split('/')
-            .slice(0, 1 + pathSegmentsToKeep)
-            .join('/') + // Preserve repo name or main directory
-          '/' + // Add slash to start the rest of the path
-          l.pathname.split('/').slice(pathSegmentsToKeep).join('/') + // Join the remaining path without "/?/"
-          (l.search ? l.search : '') + // Preserve query parameters
-          l.hash // Preserve the hash
-      );
+      // If the current location is not the main repository path
+      if (!window.location.pathname.startsWith('/EventsRegistrationApp')) {
+        // Redirect to the index.html file in the repository
+        window.location.replace('/EventsRegistrationApp/index.html');
+      }
     </script>
   </head>
   <body></body>
