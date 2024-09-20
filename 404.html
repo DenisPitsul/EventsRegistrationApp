@@ -7,26 +7,26 @@
       var l = window.location;
 
       // Only redirect if the URL doesn't already contain /EventsRegistrationApp and we're not on a valid path
-      if (
-        l.pathname === '/EventsRegistrationApp/' ||
-        !l.pathname.startsWith('/EventsRegistrationApp')
-      ) {
-        // Redirect back to the correct URL with the repository name
-        var newUrl =
-          l.protocol +
-          '//' +
-          l.hostname +
-          (l.port ? ':' + l.port : '') +
-          '/EventsRegistrationApp' +
-          l.pathname +
-          l.search +
-          l.hash;
+      // if (
+      //   l.pathname === '/EventsRegistrationApp/' ||
+      //   !l.pathname.startsWith('/EventsRegistrationApp')
+      // ) {
+      // Redirect back to the correct URL with the repository name
+      var newUrl =
+        l.protocol +
+        '//' +
+        l.hostname +
+        (l.port ? ':' + l.port : '') +
+        '/EventsRegistrationApp' +
+        l.pathname +
+        l.search +
+        l.hash;
 
-        // Only redirect if we're not already on the 404 page
-        // if (!l.pathname.includes('404.html')) {
-        l.replace(newUrl);
-        // }
-      }
+      // Only redirect if we're not already on the 404 page
+      // if (!l.pathname.includes('404.html')) {
+      l.replace(newUrl);
+      // }
+      // }
     </script>
   </head>
   <body>
