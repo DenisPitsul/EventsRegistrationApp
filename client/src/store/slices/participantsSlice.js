@@ -51,10 +51,8 @@ export const getEventRegistrationsPetDayThunk = createAsyncThunk(
       const {
         data: { data },
       } = await API.getEventRegistrationsPerDay(payload);
-      console.log('data', data);
       return data;
     } catch (err) {
-      console.log('err', err);
       return rejectWithValue({ errors: err.response.data });
     }
   }
