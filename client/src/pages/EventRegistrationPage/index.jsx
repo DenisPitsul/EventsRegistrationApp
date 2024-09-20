@@ -14,7 +14,7 @@ function EventRegistrationPage ({ event, getEvent }) {
 
   return (
     <div className='container'>
-      <Link className={styles.link} to='/events'>
+      <Link className={styles.link} to='/'>
         Events page
       </Link>
       <h1 className={styles.title}>"{event.title}" event registration</h1>
