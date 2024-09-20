@@ -14,7 +14,7 @@ function App ({ isEventFetching, isParticipantsFetching }) {
       <ToastContainer className='notification' />
       {(isEventFetching || isParticipantsFetching) && <Loader />}
       <Routes>
-        <Route path='/events' element={<EventsPage />} />
+        <Route path='/' element={<EventsPage />} />
         <Route
           path='/event/:id/registration'
           element={<EventRegistrationPage />}
@@ -23,7 +23,7 @@ function App ({ isEventFetching, isParticipantsFetching }) {
           path='/event/:id/participants'
           element={<EventParticipantsPage />}
         />
-        <Route path='*' element={<Navigate to='/events' />} />
+        <Route path='*' element={<Navigate to='/' />} />
       </Routes>
     </>
   );
