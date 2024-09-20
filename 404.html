@@ -6,23 +6,26 @@
     <script type="text/javascript">
       var l = window.location;
 
-      // Build the new URL based on the current path
-      var newUrl =
+      // Construct the base URL for the repository
+      var baseUrl =
         l.protocol +
         '//' +
         l.hostname +
         (l.port ? ':' + l.port : '') +
-        '/EventsRegistrationApp' +
-        l.pathname +
-        l.search +
-        l.hash;
+        '/EventsRegistrationApp';
 
-      // Redirect to the new URL if it's not already the current URL
+      // Check if the current pathname starts with the base URL and if it is not the 404 page
       if (
-        l.pathname !== '/EventsRegistrationApp' &&
-        !l.pathname.includes('404.html')
+        !l.pathname.startsWith('/EventsRegistrationApp') ||
+        l.pathname.includes('404.html')
       ) {
-        l.replace(newUrl);
+        // Redirect to the base URL with the existing pathname, search, and hash
+        l.replace(
+          baseUrl +
+            l.pathname.replace(/^\/EventsRegistrationApp/, '') +
+            (l.search ? l.search : '') +
+            (l.hash ? l.hash : '')
+        );
       }
     </script>
   </head>
