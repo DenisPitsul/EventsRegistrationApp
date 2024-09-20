@@ -1,31 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Redirecting...</title>
     <script type="text/javascript">
-      var l = window.location;
-
-      // Check if the pathname already contains the repository name correctly
-      if (
-        !l.pathname.startsWith('/EventsRegistrationApp') &&
-        !l.pathname.includes('404.html')
-      ) {
-        // Redirect to the correct URL with the repository name
-        var newUrl =
-          l.protocol +
-          '//' +
-          l.hostname +
-          (l.port ? ':' + l.port : '') +
-          '/EventsRegistrationApp' +
-          l.pathname +
-          l.search +
-          l.hash;
-
-        // Only redirect if we're not already on the correct URL
-        if (newUrl !== l.href) {
-          l.replace(newUrl);
-        }
+      // If the current location is not the main repository path
+      if (!window.location.pathname.startsWith('/EventsRegistrationApp')) {
+        // Redirect to the index.html file in the repository
+        window.location.replace('/EventsRegistrationApp/index.html');
       }
     </script>
   </head>
