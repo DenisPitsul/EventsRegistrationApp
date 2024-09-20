@@ -6,20 +6,22 @@
     <script type="text/javascript">
       var l = window.location;
 
-      // Check if the pathname doesn't already start with '/EventsRegistrationApp'
-      if (!l.pathname.startsWith('/EventsRegistrationApp')) {
-        // Construct the new URL
+      // Check if the pathname contains the repository name and is a 404
+      if (
+        l.pathname.indexOf('/EventsRegistrationApp') === -1 ||
+        l.pathname.includes('404.html')
+      ) {
+        // If it's not a valid path, perform the redirect
         var newUrl =
           l.protocol +
           '//' +
           l.hostname +
           (l.port ? ':' + l.port : '') +
-          '/EventsRegistrationApp' + // Add the repository name
-          l.pathname + // Preserve the rest of the path
-          l.search + // Preserve query parameters
-          l.hash; // Preserve hash
+          '/EventsRegistrationApp' + // Start with your repository name
+          l.pathname.replace(/^\/EventsRegistrationApp/, '') + // Adjust the path
+          (l.search ? l.search : '') + // Preserve query parameters
+          (l.hash ? l.hash : ''); // Preserve hash
 
-        // Redirect to the corrected URL
         l.replace(newUrl);
       }
     </script>
