@@ -18,6 +18,7 @@
           .split('/')
           .slice(1, 1 + pathSegmentsToKeep)
           .join('/') + // Preserve main repository directory
+        '/' + // Add a slash before the rest of the path
         l.pathname
           .split('/')
           .slice(pathSegmentsToKeep + 1)
@@ -27,9 +28,11 @@
 
       // Perform the redirect if not already on the 404 page
       if (!l.pathname.includes('404.html')) {
-        l.replace(window.location);
+        l.replace(newUrl);
       }
     </script>
   </head>
-  <body></body>
+  <body>
+    <h1>Redirecting...</h1>
+  </body>
 </html>
