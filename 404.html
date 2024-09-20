@@ -1,33 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8" />
     <title>Redirecting...</title>
     <script type="text/javascript">
       var l = window.location;
-      var pathSegmentsToKeep = 1; // Number of segments of the path to preserve (e.g., for /EventsRegistrationApp)
 
-      // Create a new URL by rebuilding the pathname
-      var newUrl =
-        l.protocol +
-        '//' +
-        l.hostname +
-        (l.port ? ':' + l.port : '') +
-        '/' +
-        l.pathname
-          .split('/')
-          .slice(1, 1 + pathSegmentsToKeep)
-          .join('/') + // Preserve main repository directory
-        '/' + // Add a slash before the rest of the path
-        l.pathname
-          .split('/')
-          .slice(pathSegmentsToKeep + 1)
-          .join('/') + // Keep the rest of the path
-        (l.search ? l.search : '') + // Preserve query parameters
-        (l.hash ? l.hash : ''); // Preserve hash
+      // Check if the pathname doesn't already start with '/EventsRegistrationApp'
+      if (!l.pathname.startsWith('/EventsRegistrationApp')) {
+        // Construct the new URL
+        var newUrl =
+          l.protocol +
+          '//' +
+          l.hostname +
+          (l.port ? ':' + l.port : '') +
+          '/EventsRegistrationApp' + // Add the repository name
+          l.pathname + // Preserve the rest of the path
+          l.search + // Preserve query parameters
+          l.hash; // Preserve hash
 
-      // Perform the redirect if not already on the 404 page
-      if (!l.pathname.includes('404.html')) {
+        // Redirect to the corrected URL
         l.replace(newUrl);
       }
     </script>
