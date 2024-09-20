@@ -5,29 +5,24 @@
     <title>Redirecting...</title>
     <script type="text/javascript">
       var l = window.location;
-      var pathSegmentsToKeep = 1; // Number of segments of the path to preserve (e.g., for /EventsRegistrationApp)
 
-      // Redirect logic to rebuild the URL correctly without using the '?'
+      // Construct the new URL without using '?'
       var newUrl =
         l.protocol +
         '//' +
         l.hostname +
         (l.port ? ':' + l.port : '') +
-        '/' +
-        l.pathname
-          .split('/')
-          .slice(1, 1 + pathSegmentsToKeep) // Preserve the main repository directory (e.g., /EventsRegistrationApp)
-          .join('/') +
-        l.pathname
-          .split('/')
-          .slice(pathSegmentsToKeep + 1) // Slice the rest of the path after the repository
-          .join('/') +
-        (l.search ? l.search : '') + // Preserve query parameters
-        l.hash; // Preserve hash
+        l.pathname;
 
-      if (l.pathname.indexOf('404.html') === -1) {
-        l.replace(newUrl);
+      // Only keep the repository name and append the original path
+      if (l.pathname.startsWith('/EventsRegistrationApp')) {
+        newUrl +=
+          l.pathname.replace('/EventsRegistrationApp', '') + l.search + l.hash;
+      } else {
+        newUrl += '/';
       }
+
+      l.replace(newUrl);
     </script>
   </head>
   <body></body>
