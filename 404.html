@@ -1,13 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
     <title>Redirecting...</title>
     <script type="text/javascript">
-      // Only run this script if we're not already on the main app's index page
-      if (!window.location.pathname.includes('/EventsRegistrationApp')) {
-        window.location.replace('/EventsRegistrationApp');
+      var l = window.location;
+
+      // Only redirect if the URL doesn't already contain /EventsRegistrationApp and we're not on a valid path
+      if (
+        l.pathname === '/EventsRegistrationApp/' ||
+        !l.pathname.startsWith('/EventsRegistrationApp')
+      ) {
+        // Redirect back to the correct URL with the repository name
+        var newUrl =
+          l.protocol +
+          '//' +
+          l.hostname +
+          (l.port ? ':' + l.port : '') +
+          '/EventsRegistrationApp' +
+          l.pathname +
+          l.search +
+          l.hash;
+
+        // Only redirect if we're not already on the 404 page
+        // if (!l.pathname.includes('404.html')) {
+        l.replace(newUrl);
+        // }
       }
     </script>
   </head>
