@@ -6,26 +6,26 @@
     <script type="text/javascript">
       var l = window.location;
 
-      // Construct the base URL for the repository
-      var baseUrl =
-        l.protocol +
-        '//' +
-        l.hostname +
-        (l.port ? ':' + l.port : '') +
-        '/EventsRegistrationApp';
-
-      // Check if the current pathname starts with the base URL and if it is not the 404 page
+      // Only redirect if the URL doesn't already contain /EventsRegistrationApp and we're not on a valid path
       if (
-        !l.pathname.startsWith('/EventsRegistrationApp') ||
-        l.pathname.includes('404.html')
+        l.pathname === '/EventsRegistrationApp/' ||
+        !l.pathname.startsWith('/EventsRegistrationApp')
       ) {
-        // Redirect to the base URL with the existing pathname, search, and hash
-        l.replace(
-          baseUrl +
-            l.pathname.replace(/^\/EventsRegistrationApp/, '') +
-            (l.search ? l.search : '') +
-            (l.hash ? l.hash : '')
-        );
+        // Redirect back to the correct URL with the repository name
+        var newUrl =
+          l.protocol +
+          '//' +
+          l.hostname +
+          (l.port ? ':' + l.port : '') +
+          '/EventsRegistrationApp' +
+          l.pathname +
+          l.search +
+          l.hash;
+
+        // Only redirect if we're not already on the 404 page
+        if (!l.pathname.includes('404.html')) {
+          l.replace(newUrl);
+        }
       }
     </script>
   </head>
